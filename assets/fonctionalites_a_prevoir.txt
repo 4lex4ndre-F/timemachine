@@ -1,7 +1,31 @@
-structure du site :
+4lex4ndre-F/timemachine
 
 
+------------------------------------------structure du site------------------------------------------
 
+src/
+	Controller/ --> Contient les fichiers qui gèrent les actions sur le site
+		admin/ --> idem coté admin
+			MembresController.php
+			PhotosController.php
+			StoriesController.php			
+		
+		MembresController.php
+		PhotosController.php
+		StoriesController.php		
+	Entity/ --> correspond aux classes des objets que l'ont va créer: membre/photo/stories
+					chaque elément sera un objet d'une de ces classes
+			--> ce dossier va aussi correspondre aux namespaces
+		membre.php
+		photo.php
+		stories.php		
+	Repository/ --> contiendra les requêtes BDD
+		MembresRepository.php
+		PhotosRepository.php
+		StoriesRepository.php	
+	app.php : tous les services seront déclarés dans ce fichier
+	controllers.php : toutes les routes seront déclarées ici
+template/... suite demain
 
 
 
