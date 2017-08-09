@@ -1,0 +1,79 @@
+structure du site :
+
+
+
+
+
+
+
+
+
+------------------------------------------fonctionnalités du site------------------------------------------
+
+fonctionalités visiteur (non connecté) :
+
+	- s'inscrire
+	- consultation du site
+	- signalement des contenus inappropriés
+
+
+fonctionalités membre :
+
+	- se connecter
+	- consultation du site
+	- signalement des contenus inappropriés
+	- upload des photos
+	- noter une photo
+	- commenter une photo
+	- statistiques utilisateur
+	- stories / dossier thématique
+	- se désinscrire
+	- modifier son profil
+
+
+fonctionalités admin :
+
+	 - accès statistiques du site
+	 - changer status user
+	 - (modifier une photo)
+	 - supprimer une photo
+	 - supprimer un membre
+	 - changer le mot de passe d'un membre
+	 - notification des contenus inappropriés
+ 
+ 
+fonctions de recherche :
+
+- le site aura des filtres de recherches classiques:
+	- par lieux
+	- par date
+	- par catégorie
+	- par mot clés
+	
+- le site aura des outils de recherche modernes (ca ne va peut-être pas être simple)
+	- timeline avec curseur interactif qui affiche l'année sélectionnée
+	- carte du monde interractive pour la sélection de la région
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
