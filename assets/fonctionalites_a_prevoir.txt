@@ -14,7 +14,7 @@ src/
 		PhotosController.php
 		StoriesController.php		
 	Entity/ --> correspond aux classes des objets que l'ont va créer: membre/photo/stories
-					chaque elément sera un objet d'une de ces classes
+					chaque élément sera un objet d'une de ces classes
 			--> ce dossier va aussi correspondre aux namespaces
 		membre.php
 		photo.php
@@ -25,7 +25,7 @@ src/
 		StoriesRepository.php	
 	app.php : tous les services seront déclarés dans ce fichier
 	controllers.php : toutes les routes seront déclarées ici
-template/... suite demain
+template/ --> les vues
 
 
 
@@ -50,7 +50,7 @@ fonctionalités membre :
 	- noter une photo
 	- commenter une photo
 	- statistiques utilisateur
-	- stories / dossier thématique
+	- créer stories / dossier thématique
 	- se désinscrire
 	- modifier son profil
 
@@ -79,7 +79,10 @@ fonctions de recherche :
 	- carte du monde interractive pour la sélection de la région
 
 
+- fonctionnalités supllémentaires :
 
+	- liens vers autres réseaux sociaux
+	- APIs
 
 
 
