@@ -16,6 +16,9 @@ src/
 	Entity/ --> correspond aux classes des objets que l'ont va créer: membre/photo/stories
 					chaque élément sera un objet d'une de ces classes
 			--> ce dossier va aussi correspondre aux namespaces
+			membre.php
+			photo.php
+			story.php
 		membre.php
 		photo.php
 		stories.php		
