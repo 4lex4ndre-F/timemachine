@@ -12,7 +12,7 @@ namespace Entity;
  */
 class membre {
     /**
-     *
+     * c'est la primary key
      * @var int 
      */
     private $id;
@@ -59,6 +59,8 @@ class membre {
      */
     private $status;
     
+    
+    // Les getters / setters
     public function getId() {
         return $this->id;
     }
