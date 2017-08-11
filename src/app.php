@@ -28,13 +28,17 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
  * 
  * nécéssite l'installation par composer:
  *      composer require doctrine/dbal:~2.2
- *      en ligne de commande dans le reperetoire de l'application
+ *      en ligne de commande dans le repertoire de l'application
  * 
  * /!\ créer le controller
  */
 $app->register(
     new DoctrineServiceProvider(),
     [
+        /* pensez à mettre les paramètres de connexion dans un fichier qui
+         * sera en gitignore
+         */
+        
         /* conventions de nomage */
         'db.options' => [
             'driver' => 'pdo_mysql',
