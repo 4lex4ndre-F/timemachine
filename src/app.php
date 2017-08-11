@@ -17,4 +17,15 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     return $twig;
 });
 
+/* ----------------------------------
+
+             CONTROLLERS 
+
+ ----------------------------------*/
+
+/* 
+ * Front
+ */
+/* Homepage */
+
 return $app;

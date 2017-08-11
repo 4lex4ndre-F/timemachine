@@ -3,34 +3,65 @@
 
 ------------------------------------------structure du site------------------------------------------
 
-src/
-	Controller/ --> Contient les fichiers qui gèrent les actions sur le site
-		admin/ --> idem coté admin
+timemachine / source file
+	
+	1. DOSSIER src/
+		
+		1.1 DOSSIER Controller/ 
+			# Contient les fichiers qui gèrent les actions ( = Class) sur le site
+			admin/ --> idem coté admin
+				
+
+					MembresController.php
+					PhotosController.php
+					StoriesController.php			
+				
 			MembresController.php
 			PhotosController.php
-			StoriesController.php			
+			StoriesController.php		
 		
-		MembresController.php
-		PhotosController.php
-		StoriesController.php		
-	Entity/ --> correspond aux classes des objets que l'ont va créer: membre/photo/stories
-					chaque élément sera un objet d'une de ces classes
-			--> ce dossier va aussi correspondre aux namespaces
+		1.2 DOSSIER Entity/ --> correspond aux classes des objets que l'ont va créer: membre/photo/stories
+						chaque élément sera un objet d'une de ces classes
+				--> ce dossier va aussi correspondre aux namespaces
+				membre.php
+				photo.php
+				story.php
 			membre.php
 			photo.php
-			story.php
-		membre.php
-		photo.php
-		stories.php		
-	Repository/ --> contiendra les requêtes BDD
-		MembresRepository.php
-		PhotosRepository.php
-		StoriesRepository.php	
-	app.php : tous les services seront déclarés dans ce fichier
-	controllers.php : toutes les routes seront déclarées ici
-template/ --> les vues
-	admin/ --> vues du back-office
-	autres_vues.html.twig (plusieurs fichiers)
+			stories.php		
+		
+		1.2 DOSSIER Repository/ --> contiendra les requêtes BDD
+			1.2.1 FICHIER MembresRepository.php
+			1.2.2 FICHIER PhotosRepository.php
+			StoriesRepository.php	
+		
+		1.3 FICHIER app.php :
+			# tous les services seront déclarés dans ce fichier
+				-> déclarer les CONTROLLER 
+				-> déclarer les REPOSITORY
+				-> déclarer les AUTRES SERVICES (password)
+					=> exemple de la homepage
+						/* Homepage */
+						$app['index.controller'] = function() use ($app){ // use pour éviter global $app
+							//  global $app;
+							return new \Controller\IndexController($app);
+						};
+
+		1.4 FICHIER controllers.php
+			# toutes les routes seront déclarées dans ce fichier
+				-> FRONT
+				-> BACK
+				-> RUBRIQUES
+				-> ARTICLES
+					=> exemple
+						$app
+							->get('/', 'index.controller:indexAction')
+							->bind('homepage')
+						;
+
+	template/ --> les vues
+		admin/ --> vues du back-office
+		autres_vues.html.twig (plusieurs fichiers)
 
 
 
