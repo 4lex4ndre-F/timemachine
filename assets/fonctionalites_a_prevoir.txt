@@ -63,12 +63,19 @@ fonctionalités membre :
 fonctionalités admin :
 
 	 - accès statistiques du site
-	 - changer status user
+				- nbre/liste de photos 
+					+ supprimer une photo
+				- nbre/liste de stories 
+					+ supprimer une photo/storie
+				- nbre/liste de membres 
+					+ stats par genre 
+					+ changer status user 
+					+ supprimer un membre 
+					+ changer le mot de passe d'un membre
+				- stats utillisation du site
+	 - acces aux fonctionnalités user (classe héritée de user ?)
 	 - (modifier une photo)
-	 - supprimer une photo
-	 - supprimer un membre
-	 - changer le mot de passe d'un membre
-	 - notification des contenus inappropriés
+	 - (notification des contenus inappropriés)
  
  
 fonctions de recherche :
