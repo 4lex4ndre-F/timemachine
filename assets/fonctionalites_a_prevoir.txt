@@ -89,6 +89,8 @@ fonctions de recherche :
 - le site aura des outils de recherche modernes (ca ne va peut-être pas être simple)
 	- timeline avec curseur interactif qui affiche l'année sélectionnée
 	- carte du monde interractive pour la sélection de la région
+	
+(PROPOSITION - bonus++ ajax pour afficher des résultats de recherche dès le début de la saisie)
 
 
 - fonctionnalités supllémentaires :
