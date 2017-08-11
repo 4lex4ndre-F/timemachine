@@ -1,0 +1,71 @@
+body{
+    background: #efefef;
+}
+
+/********************* SECTION *********************/
+
+.section{ padding-top: 1OO, 0, 100, 0;
+
+}
+/********** NAV  ***********/
+
+/*** BTN CONNEXION ***/
+
+#btn-co{
+    margin: 10px 0;
+}
+
+
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+/********* MODAL COMPLET *********/
+
+
+
+
+/********************* FOOTER *********************/
+
+/********** Animation **********/ 
+
+/*
+.separator-wave{
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.separator-wave-inner{
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1600' height='200'><path id='wave' fill='#ffffff' d='M1625,90c-311,0-445.9-34.3-847-34C378,61,264,90-25,90v77h1650C1625,172,1625,124,1625,90z'/></svg>");
+  
+  background-repeat: repeat-x;
+    
+  width: 6400px;
+  height: 200px;
+  fill: white;
+  
+  animation-name: wave;
+  animation-timing-function: cubic-bezier(0.36, 0.45, 0.63, 0.53);
+  animation-iteration-count: infinite;
+  animation-duration: 7s;
+}
+
+
+@keyframes wave {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-1600px, 0, 0);
+  }
+}
+*/
+
+/********** Copyright **********/ 
