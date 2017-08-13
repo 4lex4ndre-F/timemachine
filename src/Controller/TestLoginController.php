@@ -11,9 +11,6 @@ namespace Controller;
  */
 class TestLoginController {
     
-    public function loginAction ()
-    {
-        echo '<pre>'; var_dump($_POST); echo '</pre>';
-    }
+
     
 }

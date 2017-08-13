@@ -21,6 +21,10 @@ $app
     ->bind('homepage')
 ;
 
+$app
+    ->match('/login', 'membre.controller:loginAction')
+    ->bind('login')
+;
 
 
 

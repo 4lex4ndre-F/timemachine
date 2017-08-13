@@ -5,6 +5,7 @@ use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
+use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 
 $app = new Application();
@@ -17,6 +18,9 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 
     return $twig;
 });
+
+
+
 
 
 /**
@@ -50,6 +54,27 @@ $app->register(
         ]
     ]
 );
+
+
+/* $app['session'] = gestionnaire de session de Symfony */
+$app->register(new SessionServiceProvider());
+
+/* ---------------CONTROLLERS--------------- */
+/* Front */
+
+
+$app['membre.controller'] = function() use ($app) { // use car sinon la fonction 
+//ne connait pas la variable $app
+    return new Entity\membre($app);
+};
+
+
+
+
+
+
+
+
 
 
 

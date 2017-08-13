@@ -150,6 +150,11 @@ footer p {
     color: #2C3E50;
 }
 
+pre{
+    background: #333;
+    color: #F7F7F7;
+}
+
 div.twig_content{
     margin: 20px 0 60px;
 }
