@@ -1,6 +1,6 @@
 <?php
 // connexion à la base de données
-$pdo = new PDO('mysql:host=localhost;dbname=wf3_site','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,  PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+$pdo = new PDO('mysql:host=localhost;dbname=timemachine','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,  PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
 require_once("function.inc.php");
 
@@ -13,8 +13,8 @@ session_start();
 
 
 // définition de la constante pour le chemin absolu ainsi que pour la racine serveur
-// raciine site
-define("URL","/php/site/");
+// racine site
+define("URL","/projetsitephoto/assets/philippe/");
 
 //racine serveur
 define("RACINE_SERVEUR", $_SERVER['DOCUMENT_ROOT'] . URL);
