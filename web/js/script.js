@@ -1,4 +1,5 @@
-$('.toggle-show .toggle-show-btn').click(function(){
+/*
+ * $('.toggle-show .toggle-show-btn').click(function(){
   $('#payment .card').toggleClass('flip');
   var inp = $('.input input');
   if (inp.attr('type') == 'password') {
@@ -16,4 +17,15 @@ $('.toggle-show .toggle-show-btn').click(function(){
 
 document.querySelector('.img__btn').addEventListener('click', function() {
   document.querySelector('.cont').classList.toggle('s--signup');
+}); */
+
+
+/*
+ * Ecoute js du formulaire de login
+ 
+
+$('.login .loginmodal-submit').click(function(e) {
+    e.preventDefault();
+    alert('click detected!');
 });
+ */

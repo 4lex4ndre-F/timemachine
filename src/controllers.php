@@ -26,6 +26,11 @@ $app
     ->bind('login')
 ;
 
+$app
+    ->get('/afficher_membre', 'membre.controller:testAfficheUser')
+    ->bind('afficher_membre')
+;
+
 
 
 

@@ -8,6 +8,9 @@ use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 
+include('connexion.php');
+
+
 $app = new Application();
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new AssetServiceProvider());
@@ -15,6 +18,8 @@ $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...
+    // pour accéder au UserManager dans les templates twig
+    $twig->addGlobal('user_manager', $app['user.manager']);
 
     return $twig;
 });
@@ -44,14 +49,7 @@ $app->register(
          */
         
         /* conventions de nomage */
-        'db.options' => [
-            'driver' => 'pdo_mysql',
-            'host' => 'localhost',
-            'dbname' => 'timemachine',
-            'user' => 'root',
-            'password' => '',
-            'charset' => 'utf8'
-        ]
+        'db.options' => $connexion
     ]
 );
 
@@ -65,14 +63,21 @@ $app->register(new SessionServiceProvider());
 
 $app['membre.controller'] = function() use ($app) { // use car sinon la fonction 
 //ne connait pas la variable $app
-    return new Entity\membre($app);
+    return new Controller\MembreController($app);
 };
 
 
+/* ---------------REPOSITORY--------------- */
+
+$app['membre.repository'] = function() use ($app) {
+    return new Repository\MembreRepository($app);
+};
 
 
-
-
+/* AUTRES SERVICES */
+$app['user.manager'] = function() use ($app) {
+    return new Service\UserManager($app['session']);
+};
 
 
 

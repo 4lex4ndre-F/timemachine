@@ -16,23 +16,40 @@ use Entity\membre;
  * @author Etudiant
  */
 class MembreController extends ControllerAbstract{
-    public function loginAction ($name = null, $password = null)
+
+    public function loginAction()
     {
-        $errors = "";
-        $name = $_POST['user'];
-        $password = $_POST['pass'];
+        $email = '';
         
-        if(!empty($_POST)){
-            $response = [
-                'name' => $name,
-                'password' => $password
-            ];
-        }else {
-            $errors = "Les champs sont obligatoires";
-            $response = ['errors' => $errors];
+        $user = '';
+        if (!empty($_POST)) {
+            $email = $_POST['email'];
+            $user = $this->app['membre.repository']->findByEmail($email);
+            if (!is_null($user)) {
+                if ($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword())) {
+                    $this->app['user.manager']->login($user);
+                    
+                    return $this->redirectRoute('homepage');
+                }
+            }
+            
+            $this->addFlashMessage('Identification incorrecte', 'error');
         }
         
-        return $this->render('login_confirm.html.twig', $response);
-
+        return $this->render(
+            'login_confirm.html.twig',
+            ['email' => $email, 'User' => $user]
+        );
+    }
+    
+    public function testAfficheUser()
+    {
+        $user = $this->app['membre.repository']->testFindAll();
+        
+        return $this->render(
+            'index.html.twig',
+            ['User' => $user]
+        );
+        
     }
 }
