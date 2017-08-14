@@ -1,0 +1,134 @@
+4lex4ndre-F/timemachine
+
+
+------------------------------------------structure du site------------------------------------------
+
+src/
+	Controller/ --> Contient les fichiers qui gèrent les actions sur le site
+		admin/ --> idem coté admin
+			MembresController.php
+			PhotosController.php
+			StoriesController.php			
+		
+		MembresController.php
+		PhotosController.php
+		StoriesController.php		
+	Entity/ --> correspond aux classes des objets que l'ont va créer: membre/photo/stories
+					chaque élément sera un objet d'une de ces classes
+			--> ce dossier va aussi correspondre aux namespaces
+			membre.php
+			photo.php
+			story.php
+		membre.php
+		photo.php
+		stories.php		
+	Repository/ --> contiendra les requêtes BDD
+		MembresRepository.php
+		PhotosRepository.php
+		StoriesRepository.php	
+	app.php : tous les services seront déclarés dans ce fichier
+	controllers.php : toutes les routes seront déclarées ici
+template/ --> les vues
+	admin/ --> vues du back-office
+	autres_vues.html.twig (plusieurs fichiers)
+
+
+
+
+
+
+------------------------------------------fonctionnalités du site------------------------------------------
+
+fonctionalités visiteur (non connecté) :
+
+	- s'inscrire
+	- consultation du site
+	- signalement des contenus inappropriés
+
+
+fonctionalités membre :
+
+	- se connecter
+	- consultation du site
+	- signalement des contenus inappropriés
+	- upload des photos
+	- noter une photo
+	- commenter une photo
+	- statistiques utilisateur
+	- créer stories / dossier thématique
+	- se désinscrire
+	- modifier son profil
+
+
+fonctionalités admin :
+
+	 - accès statistiques du site
+				- nbre/liste de photos 
+					+ supprimer une photo
+				- nbre/liste de stories 
+					+ supprimer une photo/storie
+				- nbre/liste de membres 
+					+ stats par genre 
+					+ changer status user 
+					+ supprimer un membre 
+					+ changer le mot de passe d'un membre
+				- stats utillisation du site
+	 - acces aux fonctionnalités user (classe héritée de user ?)
+	 - (modifier une photo)
+	 - (notification des contenus inappropriés)
+ 
+ 
+fonctions de recherche :
+
+- le site aura des filtres de recherches classiques:
+	- par lieux
+	- par date
+	- par catégorie
+	- par mot clés
+	
+- le site aura des outils de recherche modernes (ca ne va peut-être pas être simple)
+	- timeline avec curseur interactif qui affiche l'année sélectionnée
+	- carte du monde interractive pour la sélection de la région
+	
+(PROPOSITION - bonus++ ajax pour afficher des résultats de recherche dès le début de la saisie)
+
+
+- fonctionnalités supllémentaires :
+
+	- liens vers autres réseaux sociaux
+	- APIs
+
+
+
+
+
+------------------------------------------formulaires du site------------------------------------------
+
+///////////////inscription membre :///////////////
+INSERT INTO
+table users
+
+
+nom								name="lastname" text
+prenom							name="firstname" text
+genre							name="gender" <select> 2 options m, f
+pseudo							name="pseudo" text
+email							name="email" text
+mot de passe					name="password" text (password) oeil
+vérif mot de passe				name="password-check" --> ne rentre pas dans la bdd, sert à comparer le champ password
+
+critères de vérification:
+nom / prenom / pseudo -->	taille 2 < 50
+							string
+							!empty
+							caractères spéciaux
+							...
+email --> validate
+
+vérifpass == password
+
+
+
+ 
+ 
+ 
