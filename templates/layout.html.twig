@@ -95,10 +95,8 @@
 
         <!-- contenu dynamique de la page -->
         {% block content %}{% endblock %}
-        
-        <!-- test affichage liste user -->
-        <a href="">afficher membre</a>
-        <div>{{ dump(User) }}</div>
+
+
         
         
         <!-- MODAL Login simple pour essais -->
@@ -149,6 +147,6 @@
         <script src="https://use.fontawesome.com/dbb72ac4f9.js"></script> 
         
         <!-- Script custom -->
-        <script src="js/script.js"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
     </body>
 </html>

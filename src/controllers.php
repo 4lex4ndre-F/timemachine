@@ -15,9 +15,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 // front
 $app
-    ->get('/', function () use ($app) {
+    ->get('/', 'index.controller:')
+    /*->get('/', function () use ($app) {
     return $app['twig']->render('index.html.twig', array());
-})
+    })*/
     ->bind('homepage')
 ;
 
