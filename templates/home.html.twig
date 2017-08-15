@@ -1,7 +1,85 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <h1>Accueil test visual</h1>
+
     {#{{ render(url('article_list')) }}#}
     {#{% include 'article_list.html.twig' %}#}
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-sm-offset-2 col-sm-8">
+                <h1 class="display-1 text-center">PictStories</h1>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class=" col-sm-8 col-sm-offset-2">
+                <p class="lead text-center">
+                    stockes tes photos, crées tes albums,<br>
+                    profites de notre Moteur de stories et de notre Timeline Classification.
+                </p>
+                <hr class="my-6">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6 col-sm-push-3">
+                <h2 class="text-center">Crées toi un compte pour démarrer</h2
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <input type="email" class="form-control" placeholder="ton email">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <input type="password" class="form-control" placeholder="ton mot de passe">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">C'est parti !!!</button>
+                    </div>
+                </form>
+                <hr class="my-6">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6 col-sm-pull-3">
+                déjà membre...
+{#                <a class="btn btn-success btn-block" href="#" role="button">Connectes toi</a>#}
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">
+                    Connectes toi
+                </button>
+            </div>
+        </div>
+        
+        
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <p>placer les input</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary">Valider</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    </div>
+    
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/modal_connexion.js') }}"></script>
 {% endblock %}

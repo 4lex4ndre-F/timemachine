@@ -8,15 +8,9 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
-//$app->get('/homepage', function () use ($app) {
-//    return $app['twig']->render('home.html.twig', array());
-//})
-//->bind('homepage')
-//;
-
 $app
-        ->get('/homepage', 'index.controller:indexAction') // definir l'emplacement de la route
-        ->bind('home_page') // nomer la route
+        ->get('/', 'index.controller:indexAction') // definir l'emplacement de la route
+        ->bind('homepage') // nomer la route
 ;
 
 
