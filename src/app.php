@@ -27,5 +27,9 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
  * Front
  */
 /* Homepage */
+$app['index.controller'] = function(){ // use pour éviter global $app
+    //  global $app;
+    return new \Controller\IndexController();
+};
 
 return $app;
