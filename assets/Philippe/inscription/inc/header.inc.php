@@ -8,8 +8,10 @@
     <meta name="description" content="">
     <meta name="author" content="Moi">
 
-    <title>Ma boutique</title>
+    <title>Gallerie Photo</title>
+	<!--
 	<link href="<?php echo URL; ?>img/chien.jpg" rel="icon">
+	-->
     <!-- Bootstrap core CSS -->
     <link href="<?php echo URL; ?>css/bootstrap.min.css" rel="stylesheet">
 
