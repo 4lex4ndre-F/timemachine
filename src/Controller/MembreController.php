@@ -33,7 +33,7 @@ class MembreController extends ControllerAbstract{
                 }
             }
             
-            $this->addFlashMessage('Identification incorrecte', 'error');
+            //$this->addFlashMessage('Identification incorrecte', 'error');
         }
         
         return $this->render(

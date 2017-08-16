@@ -18,14 +18,10 @@ class MembreRepository extends RepositoryAbstract{
         return 'users';
     }
     
-public function testFindAll()
+    public function testFindAll()
     {
         $dbUser = $this->db->fetchAssoc(
-            'SELECT * FROM users WHERE lastname = :user',
-                [
-                    ':user' => 'Fernandes'
-                ]            
-        );
+            'SELECT * FROM users');
           
         return $this->buildEntity($dbUser);
     }
