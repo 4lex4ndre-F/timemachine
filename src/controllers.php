@@ -8,6 +8,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
+/* ----------------------------------
+    
+                FRONT
+
+ ----------------------------------*/
 $app
         ->get('/', 'index.controller:indexAction') // definir l'emplacement de la route
         ->bind('homepage') // nomer la route

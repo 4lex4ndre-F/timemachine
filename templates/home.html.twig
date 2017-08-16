@@ -4,44 +4,37 @@
 
     {#{{ render(url('article_list')) }}#}
     {#{% include 'article_list.html.twig' %}#}
-    <div class="container">
+    <div class="container-fluid">
         
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-8">
-                <h1 class="display-1 text-center">PictStories</h1>
+        <h1 class="display-1 text-center">PictStories</h1>
+        <p class="lead text-center">
+            stockes tes <b>Photos</b>, crées tes <b>Albums</b>,<br>
+            profites de notre <b>Moteur de Stories</b> et de notre <b>Timeline Classification</b>.
+        </p>
+
+        <hr class="my-6">
+     
+        <h2 class="text-center">Crées toi un compte pour démarrer</h2>
+        <form>
+            <div class="form-row justify-content-md-center">
+                <div class="form-group col-md-3 col-offset-3">
+                  <input type="email" class="form-control" placeholder="ton email">
+                </div>
+                <div class="form-group col-md-3">
+                  <input type="password" class="form-control" placeholder="ton mot de passe">
+                </div>
             </div>
-        </div>
-        
-        <div class="row">
-            <div class=" col-sm-8 col-sm-offset-2">
-                <p class="lead text-center">
-                    stockes tes photos, crées tes albums,<br>
-                    profites de notre Moteur de stories et de notre Timeline Classification.
-                </p>
-                <hr class="my-6">
+            <div class="form-row justify-content-md-center">
+                <div class="form-row col-md-6 col-offset-3">
+                    <button type="submit" class="btn btn-primary btn-block">C'est parti !!!</button>
+                </div>
             </div>
-        </div>
+        </form>
         
-        <div class="row">
-            <div class="col-sm-6 col-sm-push-3">
-                <h2 class="text-center">Crées toi un compte pour démarrer</h2
-                <form>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <input type="email" class="form-control" placeholder="ton email">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <input type="password" class="form-control" placeholder="ton mot de passe">
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">C'est parti !!!</button>
-                    </div>
-                </form>
-                <hr class="my-6">
-            </div>
-        </div>
+        <hr class="my-6">
         
-        <div class="row">
-            <div class="col-sm-6 col-sm-pull-3">
+        <div class="row justify-content-md-center">
+            <div class="col-md-6 col-md-offset-3">
                 déjà membre...
 {#                <a class="btn btn-success btn-block" href="#" role="button">Connectes toi</a>#}
                 <!-- Button trigger modal -->
@@ -51,8 +44,27 @@
             </div>
         </div>
         
+        {#<img src="{{ asset('img/map.jpg') }}" alt="Map monde" style="margin:auto; width:100%; display:block; opacity:.25;">#}
+        {#<div class="bg"></div>#}
         
-
+        {% for picture in pictures %}
+            <h2>{{ picture.title }}, <small>id : {{ picture.id }}, users_id : {{ picture.users_id }}</small></h2>
+            <p>Cette photo a été prise en <b>{{ picture.date_picture }}</b><br>
+            <p>
+                dans la ville de <b>{{ picture.city }}</b><br>
+                qui se trouve aux <b>{{ picture.country }}</b><br>
+                Vous l'avez insérée en BDD le <b>{{ picture.date_record }}</b><br>
+                le lien de la photo : <b>{{ picture.photo }}</b>
+            </p>
+            
+            
+            {% if not loop.last %}
+                <hr>
+            {% endif %}
+            
+        {% endfor %}
+        
+        
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -74,7 +86,7 @@
           </div>
         </div>
     
-    </div>
+    </div><!-- container -->
     
     
 {% endblock %}

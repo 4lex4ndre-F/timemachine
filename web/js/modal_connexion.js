@@ -6,9 +6,10 @@
 
 //alert("WOW ! Tu es sur ma page !");
 
-
-$('#myModal').on('shown.bs.modal', function () {
-//    alert("Hello World !");
-    console.log($("exampleModal"));
-    $('#myInput').focus();
+$(function(){ // Dom ready
+    $('#myModal').on('shown.bs.modal', function () {
+    //    alert("Hello World !");
+        console.log($("exampleModal"));
+        $('#myInput').focus();
+    });
 });

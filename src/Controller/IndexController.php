@@ -8,28 +8,29 @@
 
 namespace Controller;
 
-use Silex\Application;
-
 /**
  * Description of IndexController
  *
  * @author yosemite_tanguy
  */
-class IndexController
+class IndexController extends ControllerAbstract
 {
-    public function indexAction(Application $app) // INTRO/ "HOME"
-    {
-        return $app['twig']->render(
-                'home.html.twig'
-        );
-    }
-//    public function indexAction() // BLOG/HOME
+//    INTRO/HOME === cmap silex vs cmap shéma "simple"
+//    public function indexAction(Application $app)
 //    {
-//        $articles = $this->app['article.repository']->findAll();
-//        return $this->render(
-//            'index.html.twig',
-//            ['articles' => $articles]
+//        return $app['twig']->render(
+//                'home.html.twig'
 //        );
 //    }
+    
+//  BLOG/HOME    
+    public function indexAction()
+    {
+        $pictures = $this->app['pictures.repository']->findAll();
+        return $this->render(
+            'home.html.twig',
+            ['pictures' => $pictures]
+        );
+    }
     
 }
