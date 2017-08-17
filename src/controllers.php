@@ -14,15 +14,25 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
  ----------------------------------*/
 $app
+        // Homepage + Inscription
         ->match('/', 'index.controller:indexAction') // definir l'emplacement de la route
         ->bind('homepage') // nomer la route
 ;
 
-// 
+// INUTILE car inscription est dans IndexController.php (cf ci-dessus)
 //$app
 //        ->match('/utilisateur/inscription', 'users.controller:registerAction')
 //        ->bind('user_register')
 //;
+
+$app
+        ->get('/abonne/afficher_profil', 'users.controller:editProfilAction')
+        ->bind('user_profil')
+;
+$app
+        ->match('/utilisateur/deconnexion', 'users.controller:logoutAction')
+        ->bind('user_logout')
+;
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {

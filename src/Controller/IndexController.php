@@ -67,7 +67,7 @@ class IndexController extends ControllerAbstract
                 $this->addFlashMessage('Votre compte est créé');
                 
                 // CREER PAGE "espace user"
-                return $this->redirectRoute('homepage');
+                return $this->redirectRoute('user_profil');
                 
             } else {
                 $message = '<srong>Le formulaire contient des erreurs</strong>';

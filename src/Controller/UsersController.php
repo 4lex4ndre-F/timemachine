@@ -69,5 +69,24 @@ class UsersController extends ControllerAbstract
 //        );
     }
     
+    public function editProfilAction()
+    {
+        $user = $this->app['user.manager']->getUser();
+        
+        return $this->render(
+            'user/edit_profil.html.twig',
+            [
+                'user' => $user,
+            ]
+        );
+    }
+    
+    public function logoutAction()
+    {
+        $this->app['user.manager']->logout();
+        
+        return $this->redirectRoute('homepage');
+    }
+    
     
 }
