@@ -28,8 +28,12 @@
 			?>
 				<li><a href="<?php echo URL; ?>profil.php">profil</a></li>
 				<li><a href="<?php echo URL; ?>connexion.php?action=deconnexion">Déconnexion</a></li>
+				<li><a href="<?php echo URL; ?>admin/gestionphotos.php">Gestion des photos</a></li>';
+				
 			<?php	
 				}
+		
+		
 		
 				//rajout des liens d'administration si l'utilisateur est administration
 				
