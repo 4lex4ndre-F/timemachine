@@ -35,7 +35,15 @@
         <![endif]-->
     </head>
     <body>
-    
+        {% for type, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                {% if type == 'error' %}
+                    {# class alert-danger du bootstrap #}
+                    {% set type = 'danger' %}
+                {% endif %}
+                <div class="alert alert-{{ type }}">{{ flash|raw }}</div>
+            {% endfor %}
+        {% endfor %}
         {% block content %}{% endblock %}
     
         {% block javascripts %}

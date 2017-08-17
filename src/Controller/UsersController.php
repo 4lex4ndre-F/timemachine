@@ -11,25 +11,14 @@ namespace Controller;
 use Entity\Users;
 
 /**
- * Description of IndexController
+ * Description of UsersController
  *
  * @author yosemite_tanguy
  */
-class IndexController extends ControllerAbstract
+class UsersController extends ControllerAbstract
 {
-//    INTRO/HOME === cmap silex vs cmap shéma "simple"
-//    public function indexAction(Application $app)
-//    {
-//        return $app['twig']->render(
-//                'home.html.twig'
-//        );
-//    }
-    
-//  BLOG/HOME    
-    public function indexAction()
+    public function registerAction()
     {
-        $pictures = $this->app['pictures.repository']->findAll();
-        
         $user = new Users; // a besoin de Entity
         
         $errors = [];
@@ -39,13 +28,13 @@ class IndexController extends ControllerAbstract
                 ->setEmail($_POST['email'])
 //                ->setStatus($_POST['status']) enum user, admin
             ;         
-            //var_dump($_POST);
+            
             if (empty($_POST['email'])) {
                 $errors['email'] = 'l\'email est obligatoire';
             } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 $errors['email'] = 'l\'email est n\'est pas valide';
             } 
-            elseif (!empty ($this->app['users.repository']->findByEmail($_POST['email']) )) {
+            elseif (!empty ($this->app['user.repository']->findByEmail($_POST['email']) )) {
                 $errors['email'] = 'Cet email est déjà utilisé';
             }
             
@@ -59,11 +48,8 @@ class IndexController extends ControllerAbstract
             
             if (empty($errors)) {
                 $user->setPassword($this->app['user.manager']->encodePassword($_POST['password']));
-                $this->app['users.repository']->save($user);
-                // enregistre l'utilisateur en session
-                $this->app['user.manager']->login($user);
+                $this->app['user.repository']->save($user);
                 
-                $this->addFlashMessage('Votre compte est créé');
                 // CREER PAGE "espace user"
                 return $this->redirectRoute('homepage');
                 
@@ -74,14 +60,14 @@ class IndexController extends ControllerAbstract
             }
         }
         
-        
         return $this->render(
+//            'user/register.html.twig',
             'home.html.twig',
             [
-                'pictures' => $pictures,
-                'user' => $user // variable 'user' pour twig
+                'user' => $user,
             ]
         );
     }
+    
     
 }

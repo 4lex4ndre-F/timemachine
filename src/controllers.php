@@ -14,10 +14,15 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
  ----------------------------------*/
 $app
-        ->get('/', 'index.controller:indexAction') // definir l'emplacement de la route
+        ->match('/', 'index.controller:indexAction') // definir l'emplacement de la route
         ->bind('homepage') // nomer la route
 ;
 
+// 
+//$app
+//        ->match('/utilisateur/inscription', 'users.controller:registerAction')
+//        ->bind('user_register')
+//;
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {

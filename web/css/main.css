@@ -10,9 +10,10 @@
 	 background-size: contain; ou cover 
 	background-attachment: fixed;
 }*/
-h1 {
+h1.homepage {
     color: red;
     font-family: 'Luckiest Guy', cursive;
+    padding-top: 0.3em;
 }
 
 div .bg {
@@ -25,4 +26,5 @@ div .bg {
     opacity: .1;
     width: 100%;
     height: 100%;
+    z-index: -1;
 }

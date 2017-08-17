@@ -38,6 +38,12 @@ $app->register(
         ]
 );
 
+/**
+ * $app['session'] -> gestionnaire de session de symfony
+ * crée $_SESSION
+ */
+$app->register(new Silex\Provider\SessionServiceProvider());
+
 /* ----------------------------------
 
              CONTROLLERS 
@@ -54,6 +60,10 @@ $app['index.controller'] = function() use ($app){
     return new \Controller\IndexController($app);
 };
 
+/* Inscription,  */
+$app['users.controller'] = function() use ($app){
+    return new \Controller\UsersController($app);
+};
 
 /* ----------------------------------
 
@@ -63,6 +73,21 @@ $app['index.controller'] = function() use ($app){
 
 $app['pictures.repository'] = function() use ($app){
     return new \Repository\PicturesRepository($app);
+};
+
+$app['users.repository'] = function() use ($app){
+    return new \Repository\UsersRepository($app);
+};
+
+/* ----------------------------------
+
+              AUTRES SERVICES
+ * password
+ 
+ * ----------------------------------*/
+
+$app['user.manager'] = function() use ($app) {
+    return new Service\UserManager($app['session']);
 };
 
 return $app;

@@ -6,22 +6,20 @@
     {#{% include 'article_list.html.twig' %}#}
     <div class="container-fluid">
         
-        <h1 class="display-1 text-center">PictStories</h1>
+        <h1 class="display-1 text-center homepage">PictStories</h1>
         <p class="lead text-center">
             stockes tes <b>Photos</b>, crées tes <b>Albums</b>,<br>
             profites de notre <b>Moteur de Stories</b> et de notre <b>Timeline Classification</b>.
         </p>
-
-        <hr class="my-6">
      
         <h2 class="text-center">Crées toi un compte pour démarrer</h2>
-        <form>
+        <form method="post">
             <div class="form-row justify-content-md-center">
                 <div class="form-group col-md-3 col-offset-3">
-                  <input type="email" class="form-control" placeholder="ton email">
+                  <input type="email" name="email" value="{{ user.email }}" class="form-control" placeholder="ton email">
                 </div>
                 <div class="form-group col-md-3">
-                  <input type="password" class="form-control" placeholder="ton mot de passe">
+                  <input type="password" name="password" class="form-control" placeholder="ton mot de passe">
                 </div>
             </div>
             <div class="form-row justify-content-md-center">
@@ -31,11 +29,9 @@
             </div>
         </form>
         
-        <hr class="my-6">
-        
         <div class="row justify-content-md-center">
             <div class="col-md-6 col-md-offset-3">
-                déjà membre...
+                <label>déjà membre...</label>
 {#                <a class="btn btn-success btn-block" href="#" role="button">Connectes toi</a>#}
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">
@@ -45,25 +41,25 @@
         </div>
         
         {#<img src="{{ asset('img/map.jpg') }}" alt="Map monde" style="margin:auto; width:100%; display:block; opacity:.25;">#}
-        {#<div class="bg"></div>#}
+        <div class="bg">
         
-        {% for picture in pictures %}
-            <h2>{{ picture.title }}, <small>id : {{ picture.id }}, users_id : {{ picture.users_id }}</small></h2>
-            <p>Cette photo a été prise en <b>{{ picture.date_picture }}</b><br>
-            <p>
-                dans la ville de <b>{{ picture.city }}</b><br>
-                qui se trouve aux <b>{{ picture.country }}</b><br>
-                Vous l'avez insérée en BDD le <b>{{ picture.date_record }}</b><br>
-                le lien de la photo : <b>{{ picture.photo }}</b>
-            </p>
-            
-            
-            {% if not loop.last %}
-                <hr>
-            {% endif %}
-            
-        {% endfor %}
-        
+            {% for picture in pictures %}
+                <h2>{{ picture.title }}, <small>id : {{ picture.id }}, users_id : {{ picture.users_id }}</small></h2>
+                <p>Cette photo a été prise en <b>{{ picture.date_picture }}</b><br>
+                <p>
+                    dans la ville de <b>{{ picture.city }}</b><br>
+                    qui se trouve aux <b>{{ picture.country }}</b><br>
+                    Vous l'avez insérée en BDD le <b>{{ picture.date_record }}</b><br>
+                    le lien de la photo : <b>{{ picture.photo }}</b>
+                </p>
+
+
+                {% if not loop.last %}
+                    <hr>
+                {% endif %}
+
+            {% endfor %}
+        </div>        
         
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace Entity;
 
 /**
@@ -10,7 +8,7 @@ namespace Entity;
  *
  * @author Etudiant
  */
-class membre {
+class Users {
     /**
      * c'est la primary key
      * @var int 
@@ -133,5 +131,13 @@ class membre {
         return $this;
     }
 
-
+    public function getFullName()
+    {
+        return $this->firstname . '' . $this->lastname;
+    }
+    
+    public function isAdmin()
+    {
+        return $this->role == 'admin';
+    }
 }
