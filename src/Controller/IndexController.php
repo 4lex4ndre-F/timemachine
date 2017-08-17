@@ -60,10 +60,12 @@ class IndexController extends ControllerAbstract
             if (empty($errors)) {
                 $user->setPassword($this->app['user.manager']->encodePassword($_POST['password']));
                 $this->app['users.repository']->save($user);
+                
                 // enregistre l'utilisateur en session
                 $this->app['user.manager']->login($user);
                 
                 $this->addFlashMessage('Votre compte est créé');
+                
                 // CREER PAGE "espace user"
                 return $this->redirectRoute('homepage');
                 

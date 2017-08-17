@@ -13,7 +13,7 @@
         </p>
      
         <h2 class="text-center">Crées toi un compte pour démarrer</h2>
-        <form method="post">
+        <form method="post" action="">
             <div class="form-row justify-content-md-center">
                 <div class="form-group col-md-3 col-offset-3">
                   <input type="email" name="email" value="{{ user.email }}" class="form-control" placeholder="ton email">
@@ -43,6 +43,7 @@
         {#<img src="{{ asset('img/map.jpg') }}" alt="Map monde" style="margin:auto; width:100%; display:block; opacity:.25;">#}
         <div class="bg">
         
+            <!-- Afficher les photos -->
             {% for picture in pictures %}
                 <h2>{{ picture.title }}, <small>id : {{ picture.id }}, users_id : {{ picture.users_id }}</small></h2>
                 <p>Cette photo a été prise en <b>{{ picture.date_picture }}</b><br>

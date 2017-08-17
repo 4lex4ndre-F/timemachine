@@ -35,6 +35,7 @@
         <![endif]-->
     </head>
     <body>
+        <!-- message flash destiné à l'utilisateur -->
         {% for type, flashes in app.session.flashbag.all %}
             {% for flash in flashes %}
                 {% if type == 'error' %}

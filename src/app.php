@@ -61,9 +61,9 @@ $app['index.controller'] = function() use ($app){
 };
 
 /* Inscription,  */
-$app['users.controller'] = function() use ($app){
-    return new \Controller\UsersController($app);
-};
+//$app['users.controller'] = function() use ($app){
+//    return new \Controller\UsersController($app);
+//};
 
 /* ----------------------------------
 
