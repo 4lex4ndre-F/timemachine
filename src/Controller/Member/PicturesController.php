@@ -1,6 +1,6 @@
 <?php
 
-namespace Controller\User;
+namespace Controller\Member;
 
 use Controller\ControllerAbstract;
 use Entity\Pictures;
@@ -17,15 +17,16 @@ use Entity\Pictures;
  * @author yosemite_tanguy
  */
 class PicturesController {
+    
     public function listAction()
     {
-        $pictures = $this->app['picture.repository']->findAll();
+        //$pictures = $this->app['picture.repository']->findAll();
         
         return $this->render(
-                'user/picture/list.html.twig',
-            [
-                'pictures' => $pictures
-            ]
+            'member/pictures_list.html.twig' //,
+//            [
+//                'pictures' => $pictures
+//            ]
         );
     }
 }

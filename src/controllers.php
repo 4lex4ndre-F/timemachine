@@ -48,6 +48,13 @@ $member->before(function () use ($app) {
     }
 });
 
+$app->mount('/member', $member);
+
+// l'URL de cette route est /member/...
+$member
+    ->get('/', 'member.pictures.controller:listAction')
+    ->bind('member_pictures')
+;
 /* ----------------------------------
             
                 BACK

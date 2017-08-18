@@ -27,6 +27,10 @@ class PicturesRepository extends RepositoryAbstract
         $query = 'SELECT * FROM pictures';
         
 //        $query = <<<EOS
+//SELECT * FROM pictures p
+//JOIN users u ON p.users_id = u.id
+//EOS;
+//        $query = <<<EOS
 //SELECT * FROM article a
 //JOIN category c ON a.category_id = c.id
 //EOS;

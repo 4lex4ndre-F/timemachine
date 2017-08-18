@@ -67,7 +67,12 @@ $app['users.controller'] = function() use ($app){
     return new \Controller\UsersController($app);
 };
 
-/* ----------------------------------
+/* Membre : Gestion Photos */
+$app['member.pictures.controller'] = function() use ($app){
+    return new \Controller\Pictures\PicturesController($app);
+};
+
+        /* ----------------------------------
 
               REPOSITORIES
  
