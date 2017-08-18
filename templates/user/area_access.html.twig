@@ -1,0 +1,19 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    
+    {% if user_manager.admin %}
+        <h1>Espace Admin</h1>
+        <p>email : {{ user.email }}</p>
+    {% endif %}
+    
+    {% if user_manager.member %}
+        <h1>Espace Membre</h1>
+        <p>email : {{ user.email }}</p>
+    {% endif %} 
+    
+    <a href="{{ path('user_logout')}}">Se déconnecter</a><br>
+    <a href="{{ path('user_logout')}}">Modifier Profil</a><br>
+    <a href="{{ path('user_logout')}}">Ajouter Photos</a>
+    
+{% endblock %}

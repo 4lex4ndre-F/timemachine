@@ -138,6 +138,11 @@ class Users {
     
     public function isAdmin()
     {
-        return $this->role == 'admin';
+        return $this->status == 'admin';
+    }
+    
+    public function isMember()
+    {
+        return $this->status == 'user';
     }
 }

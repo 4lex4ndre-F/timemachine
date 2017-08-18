@@ -10,6 +10,7 @@ namespace Controller;
 
 use Entity\Users;
 
+
 /**
  * Description of UsersController
  *
@@ -23,17 +24,16 @@ class UsersController extends ControllerAbstract
 //            
 //          SE TROUVE DANS IndexController.php
 //          
-//          -> pour etre plus précis: les vérif
-//          
 //    /*-----------------------------------------
 
     
-    public function editProfilAction()
+    public function areaAccesAction()
     {
+        
         $user = $this->app['user.manager']->getUser();
         
         return $this->render(
-            'user/edit_profil.html.twig',
+            'user/area_access.html.twig',
             [
                 'user' => $user,
             ]

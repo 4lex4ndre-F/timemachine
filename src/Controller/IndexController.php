@@ -10,6 +10,7 @@ namespace Controller;
 
 use Entity\Users;
 
+
 /**
  * Description of IndexController
  *
@@ -74,7 +75,7 @@ class IndexController extends ControllerAbstract
                 $this->addFlashMessage('Votre compte est créé');
                 
                 // CREER PAGE "espace user"
-                return $this->redirectRoute('user_profil');
+                return $this->redirectRoute('area_access');
                 
             } else {
                 $message = '<srong>Le formulaire contient des erreurs</strong>';
@@ -88,14 +89,14 @@ class IndexController extends ControllerAbstract
         if(!empty($_POST['login'])) {
             
             $emaillogin = $_POST['emaillogin'];
-//            dump($_POST); die;
+
             $user = $this->app['users.repository']->findByEmail($emaillogin);
             
             if (!is_null($user)) {
                 if($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword())) {
                     $this->app['user.manager']->login($user);
                     
-                    return $this->redirectRoute('user_profil');
+                    return $this->redirectRoute('area_access');
                 }
             }
             

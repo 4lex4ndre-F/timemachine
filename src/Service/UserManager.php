@@ -86,5 +86,11 @@ class UserManager
     public function isAdmin()
     {
         return $this->session->has('user') && $this->session->get('user')->isAdmin();
+        
+    }
+    
+    public function isMember()
+    {
+        return $this->session->has('user') && $this->session->get('user')->isMember();
     }
 }

@@ -26,14 +26,58 @@ $app
 //;
 
 $app
-        ->get('/abonne/afficher_profil', 'users.controller:editProfilAction')
-        ->bind('user_profil')
+        ->get('/espace_utilisateur', 'users.controller:areaAccesAction')
+        ->bind('area_access')
 ;
 
 $app
         ->match('/utilisateur/deconnexion', 'users.controller:logoutAction')
         ->bind('user_logout')
 ;
+
+/* ----------------------------------
+            
+            ESPACE MEMBRE
+
+ ----------------------------------*/
+$member = $app['controllers_factory'];
+
+$member->before(function () use ($app) {
+    if (!$app['user.manager']->isMember() ) {
+        $app->abbort(403, 'Accès refusé');
+    }
+});
+
+/* ----------------------------------
+            
+                BACK
+
+ ----------------------------------*/
+
+/* ----------------------------------
+Permet de PLACER admin
+devant les route de :
+ * RUBRIQUES
+ * ARTICLES
+ ----------------------------------*/
+
+// crée un groupe de routes
+$admin = $app['controllers_factory'];
+
+/*
+ * Pour ttes les routes du groupe,
+ *  si on est pas connecté en admin, on se prend une 403
+ */
+$admin->before(function () use ($app) {
+    if (!$app['user.manager']->isAdmin() ) {
+        $app->abbort(403, 'Accès refusé');
+    }
+});
+
+// ttes les routes définies par $admin
+// auront une URL commençant par /admin sans avoir à l'ajouter dans chaque route
+$app->mount('/admin', $admin);
+
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
