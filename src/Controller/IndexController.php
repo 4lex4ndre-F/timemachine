@@ -34,18 +34,25 @@ class IndexController extends ControllerAbstract
         
         $errors = [];
         
-        if (!empty($_POST)) {
+        $emailcreate ='';
+        
+        $emaillogin = '';
+        /* $emailcreate */
+        
+        if (!empty($_POST['create'])) {
+            
             $user
-                ->setEmail($_POST['email'])
+                ->setEmail($_POST['emailcreate'])
 //                ->setStatus($_POST['status']) enum user, admin
             ;         
             //var_dump($_POST);
-            if (empty($_POST['email'])) {
+            if (empty($_POST['emailcreate'])) {
                 $errors['email'] = 'l\'email est obligatoire';
-            } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                
+            } elseif (!filter_var($_POST['emailcreate'], FILTER_VALIDATE_EMAIL)) {
                 $errors['email'] = 'l\'email est n\'est pas valide';
             } 
-            elseif (!empty ($this->app['users.repository']->findByEmail($_POST['email']) )) {
+            elseif (!empty ($this->app['users.repository']->findByEmail($_POST['emailcreate']) )) {
                 $errors['email'] = 'Cet email est déjà utilisé';
             }
             
@@ -74,14 +81,34 @@ class IndexController extends ControllerAbstract
                 $message .= '<br>' . implode('<br>', $errors);
                 $this->addFlashMessage($message, 'error');
             }
-        }
+        }     
         
+        /* $emaillogin */
+        
+        if(!empty($_POST['login'])) {
+            
+            $emaillogin = $_POST['emaillogin'];
+//            dump($_POST); die;
+            $user = $this->app['users.repository']->findByEmail($emaillogin);
+            
+            if (!is_null($user)) {
+                if($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword())) {
+                    $this->app['user.manager']->login($user);
+                    
+                    return $this->redirectRoute('user_profil');
+                }
+            }
+            
+            $this->addFlashMessage('Identification incorrecte', 'error');
+        }
         
         return $this->render(
             'home.html.twig',
             [
                 'pictures' => $pictures,
-                'user' => $user // variable 'user' pour twig
+                'user' => $user, // variable 'user' pour twig
+                'emaillogin' => $emaillogin,
+                'emailcreate' => $emailcreate
             ]
         );
     }

@@ -8,15 +8,16 @@
         
         <h1 class="display-1 text-center homepage">PictStories</h1>
         <p class="lead text-center">
-            stockes tes <b>Photos</b>, crées tes <b>Albums</b>,<br>
-            profites de notre <b>Moteur de Stories</b> et de notre <b>Timeline Classification</b>.
+            stocke tes <b>Photos</b>, crée tes <b>Albums</b>,<br>
+            profite de notre <b>Moteur de Stories</b> et de notre <b>Timeline Classification</b>.
         </p>
      
-        <h2 class="text-center">Crées toi un compte pour démarrer</h2>
-        <form method="post" action="">
+        <h2 class="display-5 text-center">inscris-toi pour démarrer</h2>
+        
+        <form method="post">
             <div class="form-row justify-content-md-center">
                 <div class="form-group col-md-3 col-offset-3">
-                  <input type="email" name="email" value="{{ user.email }}" class="form-control" placeholder="ton email">
+                  <input type="email" name="emailcreate" value="{{ emailcreate }}" class="form-control" placeholder="ton email">
                 </div>
                 <div class="form-group col-md-3">
                   <input type="password" name="password" class="form-control" placeholder="ton mot de passe">
@@ -24,21 +25,29 @@
             </div>
             <div class="form-row justify-content-md-center">
                 <div class="form-row col-md-6 col-offset-3">
-                    <button type="submit" class="btn btn-primary btn-block">C'est parti !!!</button>
+                    <button type="submit" name="create" value="create" class="btn btn-primary btn-block">C'est parti !!!</button>
                 </div>
             </div>
         </form>
         
-        <div class="row justify-content-md-center">
-            <div class="col-md-6 col-md-offset-3">
-                <label>déjà membre...</label>
-{#                <a class="btn btn-success btn-block" href="#" role="button">Connectes toi</a>#}
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">
-                    Connectes toi
-                </button>
+        <p class="display-5 text-center">déjà membre...</p>
+        
+        <form method="post">
+            <div class="form-row justify-content-md-center">
+                <div class="form-group col-md-3 col-offset-3">
+                  <input type="email" name="emaillogin" value="{{ emaillogin }}" class="form-control" placeholder="ton email">
+                </div>
+                <div class="form-group col-md-3">
+                  <input type="password" name="password" class="form-control" placeholder="ton mot de passe">
+                </div>
             </div>
-        </div>
+            <div class="form-row justify-content-md-center">
+                <div class="form-row col-md-6 col-offset-3">
+                    <button type="submit" name="login" value="login" class="btn btn-success btn-block">Connectes toi</button>
+                </div>
+            </div>
+        </form>
+        
         
         {#<img src="{{ asset('img/map.jpg') }}" alt="Map monde" style="margin:auto; width:100%; display:block; opacity:.25;">#}
         <div class="bg">
@@ -60,10 +69,20 @@
                 {% endif %}
 
             {% endfor %}
-        </div>        
+        </div> 
         
         <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        {#<div class="row justify-content-md-center">
+            <div class="col-md-6 col-md-offset-3">
+                <label>déjà membre...</label>
+                <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">
+                    Connectes toi
+                </button>
+            </div>
+        </div>#}
+        
+        <!-- Modal -->
+        {#<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -74,14 +93,21 @@
               </div>
               <div class="modal-body">
                   <p>placer les input</p>
+                  <form method="post" action="">
+                    
+                      <input type="email" name="emaillogin" value="{{ emaillogin }}" class="form-control" placeholder="ton email">
+
+                      <input type="password" name="password" class="form-control" placeholder="ton mot de passe">
+                  
+                  </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary">Valider</button>
+                <button type="submit" name="login" value="login" class="btn btn-primary">Valider</button>
               </div>
             </div>
           </div>
-        </div>
+        </div>#}
     
     </div><!-- container -->
     

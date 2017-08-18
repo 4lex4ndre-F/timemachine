@@ -29,6 +29,7 @@ $app
         ->get('/abonne/afficher_profil', 'users.controller:editProfilAction')
         ->bind('user_profil')
 ;
+
 $app
         ->match('/utilisateur/deconnexion', 'users.controller:logoutAction')
         ->bind('user_logout')
