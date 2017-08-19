@@ -69,14 +69,14 @@ $app['users.controller'] = function() use ($app){
 
 /* Membre : Gestion Photos */
 $app['member.pictures.controller'] = function() use ($app){
-    return new \Controller\Pictures\PicturesController($app);
+    return new \Controller\Member\PicturesController($app);
 };
 
-        /* ----------------------------------
+/* ----------------------------------
 
               REPOSITORIES
  
- * ----------------------------------*/
+* ----------------------------------*/
 
 $app['pictures.repository'] = function() use ($app){
     return new \Repository\PicturesRepository($app);

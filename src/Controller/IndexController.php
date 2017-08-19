@@ -29,17 +29,17 @@ class IndexController extends ControllerAbstract
 //  BLOG/HOME    
     public function indexAction()
     {
-        $pictures = $this->app['pictures.repository']->findAll();
-        
+    
+    /* Les Requettes */
+        $pictures = $this->app['pictures.repository']->findAll();        
         $user = new Users; // a besoin de Entity
         
-        $errors = [];
-        
+    /* Déclarer les variables */
+        $errors = [];        
         $emailcreate ='';
-        
         $emaillogin = '';
-        /* $emailcreate */
         
+    /* $emailcreate */
         if (!empty($_POST['create'])) {
             
             $user
@@ -84,8 +84,7 @@ class IndexController extends ControllerAbstract
             }
         }     
         
-        /* $emaillogin */
-        
+    /* $emaillogin */       
         if(!empty($_POST['login'])) {
             
             $emaillogin = $_POST['emaillogin'];
@@ -93,7 +92,9 @@ class IndexController extends ControllerAbstract
             $user = $this->app['users.repository']->findByEmail($emaillogin);
             
             if (!is_null($user)) {
+                
                 if($this->app['user.manager']->verifyPassword($_POST['password'], $user->getPassword())) {
+                    
                     $this->app['user.manager']->login($user);
                     
                     return $this->redirectRoute('area_access');
@@ -102,7 +103,8 @@ class IndexController extends ControllerAbstract
             
             $this->addFlashMessage('Identification incorrecte', 'error');
         }
-        
+    
+    /* Si emailcreate & login Faux */
         return $this->render(
             'home.html.twig',
             [

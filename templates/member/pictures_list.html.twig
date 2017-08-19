@@ -2,10 +2,30 @@
 
 {% block title "Admin rubriques" %}#}
     
-
-
-<h3 class="text-center">Tes Photos</h3>
+{% for picture in pictures %}
+    <div class="text-center">
+        id : {{ picture.id }}<br>
+        users_id : {{ picture.users_id }}<br>
+        title : {{ picture.title }}<br>
+        photo : {{ picture.photo }}<br>
+        <img src="{{ asset('img/') }}{{ picture.photo }}" alt="{{ picture.title }}" style="width:40%; height: 20%"><br>
+        header : {{ picture.header }}<br>
+        content : {{ picture.content }}<br>
+        date_record : {{ picture.date_record }}<br>
+        date_picture : {{ picture.date_picture }}<br>
+        country : {{ picture.country }}<br>
+        city : {{ picture.city }}
+    </div>
     
+{#    <a href="{{ path('article_index', {id: article.id}) }}">Voir</a>#}
+    
+    {% if not loop.last %}
+        <hr>
+    {% endif %}
+    
+{% endfor %}
+
+
 {#<div class="media">
         
     <div class="media-left">

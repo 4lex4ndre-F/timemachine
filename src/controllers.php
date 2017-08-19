@@ -26,7 +26,7 @@ $app
 //;
 
 $app
-        ->get('/espace_utilisateur', 'users.controller:areaAccesAction')
+        ->match('/espace_utilisateur', 'users.controller:areaAccesAction')
         ->bind('area_access')
 ;
 
@@ -48,11 +48,11 @@ $member->before(function () use ($app) {
     }
 });
 
-$app->mount('/member', $member);
+$app->mount('/membre', $member);
 
-// l'URL de cette route est /member/...
+// l'URL de cette route est /membre/...
 $member
-    ->get('/', 'member.pictures.controller:listAction')
+    ->get('/photos', 'member.pictures.controller:listAction')
     ->bind('member_pictures')
 ;
 /* ----------------------------------

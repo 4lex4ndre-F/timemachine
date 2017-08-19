@@ -8,7 +8,10 @@
 
 namespace Controller;
 
-use Entity\Users;
+//use Controller\ControllerAbstract;
+//use Entity\Users;
+//use Repository\PicturesRepository;
+//use Entity\Pictures;
 
 
 /**
@@ -30,12 +33,15 @@ class UsersController extends ControllerAbstract
     public function areaAccesAction()
     {
         
-        $user = $this->app['user.manager']->getUser();
-        
+        $user = $this->app['user.manager']->getUser();     
+        $pictures = $this->app['pictures.repository']->findAll();
+//        dump($pictures);
+//        dump($user);
         return $this->render(
             'user/area_access.html.twig',
             [
                 'user' => $user,
+                'pictures' => $pictures
             ]
         );
     }

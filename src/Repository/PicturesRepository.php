@@ -9,6 +9,7 @@
 namespace Repository;
 
 use Entity\Pictures;
+use Entity\Users;
 
 /**
  * Description of PicturesRepository
@@ -24,39 +25,19 @@ class PicturesRepository extends RepositoryAbstract
     
     public function findAll()
     {
-        $query = 'SELECT * FROM pictures';
+        // $query = 'SELECT * FROM pictures';
         
-//        $query = <<<EOS
-//SELECT * FROM pictures p
-//JOIN users u ON p.users_id = u.id
-//EOS;
-//        $query = <<<EOS
-//SELECT * FROM article a
-//JOIN category c ON a.category_id = c.id
-//EOS;
-
+        $query = <<<EOS
+SELECT * FROM pictures p
+JOIN users u ON p.users_id = u.id
+EOS;
         
         $dbPictures = $this->db->fetchAll($query);
         
         $pictures = [];
         
         foreach ($dbPictures as $dbPicture){
-            /**********************************
-             ******  ON FACTORISE *************
-             ********************************* */
-            /*
-            $article = new Article(); // \Entity\Article => clic droit fixuses
             
-            
-            $article
-                    ->setId($dbArticle['id'])
-                    ->setTitle($dbArticle['title'])
-                    ->setHeader($dbArticle['header'])
-                    ->setContent($dbArticle['content'])
-            ;
-            
-
-                   /*****  PAR  *****/ 
             $picture = $this->buildEntity($dbPicture); 
             
             $pictures[] = $picture;
@@ -75,6 +56,19 @@ class PicturesRepository extends RepositoryAbstract
 //                ->setName($data['name'])
 //        ;
         
+        $user = new Users();
+        
+            $user
+                    ->setId($data['id'])
+//                    ->setFirstname($data['firstname'])
+//                    ->setLastname($data['lastname'])
+//                    ->setGender($data['gender'])
+//                    ->setPseudo($data['pseudo'])
+//                    ->setEmail($data['email'])
+//                    ->setPassword($data['password'])
+//                    ->setStatus($data['status'])
+        ;
+        
         $picture = new Pictures();
             
             $picture
@@ -92,7 +86,7 @@ class PicturesRepository extends RepositoryAbstract
 //                    ->setCategory($category)
             ;
             
-            return $picture;
+        return $picture;
         
     }
 }
