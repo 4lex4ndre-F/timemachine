@@ -31,7 +31,7 @@ class IndexController extends ControllerAbstract
     {
     
     /* Les Requettes */
-        $pictures = $this->app['pictures.repository']->findAll();        
+//        $pictures = $this->app['pictures.repository']->findAll();        
         $user = new Users; // a besoin de Entity
         
     /* Déclarer les variables */
@@ -108,7 +108,7 @@ class IndexController extends ControllerAbstract
         return $this->render(
             'home.html.twig',
             [
-                'pictures' => $pictures,
+//                'pictures' => $pictures,
                 'user' => $user, // variable 'user' pour twig
                 'emaillogin' => $emaillogin,
                 'emailcreate' => $emailcreate

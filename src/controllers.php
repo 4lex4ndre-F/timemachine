@@ -13,23 +13,27 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
                 FRONT
 
  ----------------------------------*/
+
+// Homepage indexAction(Login + Inscription + afficher photo)
 $app
-        // Homepage + Inscription
         ->match('/', 'index.controller:indexAction') // definir l'emplacement de la route
         ->bind('homepage') // nomer la route
 ;
 
-// INUTILE car inscription est dans IndexController.php (cf ci-dessus)
+// INUTILE car l'inscription se fait dans IndexController.php (cf ci-dessus)
 //$app
 //        ->match('/utilisateur/inscription', 'users.controller:registerAction')
 //        ->bind('user_register')
 //;
 
+
+// Acces à l'espace Admin ou Membre (+ affichage des photos du membre)
 $app
         ->match('/espace_utilisateur', 'users.controller:areaAccesAction')
         ->bind('area_access')
 ;
 
+// logoutAction()
 $app
         ->match('/utilisateur/deconnexion', 'users.controller:logoutAction')
         ->bind('user_logout')
@@ -50,10 +54,15 @@ $member->before(function () use ($app) {
 
 $app->mount('/membre', $member);
 
-// l'URL de cette route est /membre/...
+// Editer une photo
 $member
-    ->get('/photos', 'member.pictures.controller:listAction')
-    ->bind('member_pictures')
+        ->match('/espace_utilisateur/photo/edition/{id}', 'member.pictures.controller:editAction')
+        ->value('id', null)
+        ->bind('member_pictures_edit')
+        // exemple
+        // ->match('/article/edition/{id}', 'admin.article.controller:editAction')
+        // ->value('id', null) // valeur par défaut pour l'id
+        // ->bind('admin_article_edit')
 ;
 /* ----------------------------------
             

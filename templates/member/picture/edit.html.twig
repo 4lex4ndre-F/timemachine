@@ -1,0 +1,104 @@
+{% extends "layout.html.twig" %}
+
+{% block title "Edit Photos" %}
+    
+{% block content %}
+    
+
+    {#<form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Titre</label>
+            <input type="text" name="title" value="{{ picture.title }}" class="form-control">
+            
+            <label>Header</label>
+            <textarea type="text" name="header" class="form-control">{{ picture.header }}</textarea>
+            
+            <label>Content</label>
+            <textarea type="text" name="content" class="form-control">{{ picture.content }}</textarea>#}
+            
+            {#<label>Rubrique</label>
+            <select name="category" class="form-control">
+                <option value="">Choisissez une rubrique</option>
+                {% for category in categories %}
+                    <option
+                        value="{{ category.id }}"
+                        {% if category.id == picture.categoryId %}selected{% endif %}>
+                        {{ category.name }}
+                    </option>
+                {% endfor %}
+            </select>#}
+            
+        {#</div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <a href="{{ path('area_access') }}" class="btn btn-default">Annuler</a>
+    </form>#}
+     
+    <div class="container">
+        <h1 class="display-5 text-center">Ajoute une Photo</h1>
+        <div class="row justify-content-md-center">
+            <div class="col-sm-6 col-sm-offset-2">
+                <form method="post" action="" enctype="multipart/form-data">  <!-- on rajoute enctype parce que l'on va demander de joindre une pièce jointe-->
+				
+                    <input type="hidden" name="users_id" id="users_id" class="form-control" value="{{ picture.users_id }}">
+					
+                    <div class="form-group">
+                        <label for="reference">title<span style="color:red;"></span></label>
+                        <input type="text" name="title" id="title" class="form-control" placeholder="title" value="{{ picture.title }}">
+                    </div>								
+                    <div class="form-group">
+                        <label for="header">header<span style="color:red;"></span></label>
+                        <input type="text" name="header" id="header" class="form-control" placeholder="header "value="{{ picture.header }}">
+                    </div>
+                    <div class="form-group">
+                            <label for="content">content</label>
+                            <input type="text" name="content" id="content" class="form-control" placeholder="content"value="{{ picture.content }}">
+                    </div>
+                    
+                    <input type="hidden" name="date_record" id="date_record" class="form-control" value="{{ picture.date_picture|date('d/m/Y') }}">
+                    
+                    <div class="form-group">
+                            <label for="date_picture">Année du cliché </label>
+                            <input type="date" name="date_picture" id="date_picture" class="form-control" placeholder="date de la photo"value="{{ picture.date_picture }}">
+                    </div>
+                    <div class="form-group">
+                            <label for="country">pays</label>
+                            <input type="text" name="country" id="country" class="form-control" placeholder="country"value="{{ picture.country }}">
+                    </div>
+                    <div class="form-group">
+                            <label for="city">ville / lieu</label>
+                            <input type="text" name="city" id="city" class="form-control" placeholder="ville / lieu" value="{{ picture.city }}">
+                    </div>
+					
+					{#<?php
+					//affichage de la photo actuelle dans le cas d'une modification d'article
+						if(isset($photo_actuel)) //si cette variable existe alors nous sommes dans le cas d'une modification
+						{
+							echo '<div class="form-group">';
+							echo '<label>Photo actuelle</label>';
+							echo '<img src="'.URL . 'photo/' . $photo_actuelle .'" class="img-thumbnail" width="210" />';
+							// On crée un champs caché qui contiendra le nom de la photo afin de le récupérer lors de la validation du formulaire.
+							echo '<input type="hidden" name="ancienne_photo" value="' .$photo_actuelle . '"/>';
+							echo '</div>';
+						}
+					
+					?>#}
+                    <div class="form-group">
+                            <label for="photo">photo</label>
+                            <input type="file" name="photo" id="photo" class="form-control" value="">
+                    </div>					
+                    
+                    {#<div class="form-group">
+                        <label for="keywords">entrer des mots clefs séparés par des virgules , </label>
+                        <input type="text" name="keywords" id="keywords" class="form-control" value="">
+                    </div>#}				
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <a href="{{ path('area_access') }}" class="btn btn-default">Annuler</a>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>    
+    </div><!-- container -->
+{% endblock %}

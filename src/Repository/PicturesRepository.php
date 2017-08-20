@@ -46,7 +46,59 @@ EOS;
         
         return $pictures;
             
-    }    
+    }
+    
+    public function find($id)
+    {
+        $query = 'SELECT * FROM pictures p'
+                . ' JOIN users u ON p.users_id = u.id'
+                . ' WHERE p.id = :id'
+        ;
+                
+        $dbPictures = $this->db->fetchAssoc(
+            $query,
+        [
+            ':id' => $id
+        ]
+        );
+        if(!empty($dbPictures)){
+            return $this->buildEntity($dbPictures);
+        }
+    }
+    
+    public function save(Pictures $picture)
+    {
+        // les données à enregistrer en BDD
+        $data  = [
+                    'users_id' => $picture->getUsers_id(),
+                    'photo' => $picture->getPhoto(),
+                    'title' => $picture->getTitle(),
+                    'header' => $picture->getHeader(),
+                    'content' => $picture->getContent(),
+                    'date_record' => $picture->getDate_record(),
+                    'date_picture' => $picture->getDate_picture(),
+                    'country' => $picture->getCountry(),
+                    'city' => $picture->getCity(),
+                    //'category_id' => $article->getCategoryId()
+                ];
+        
+        // si la category a un id, on est en update
+        // sinon en insert
+        $where = !empty($picture->getId())
+            ? ['id' => $picture->getId()]
+            : NULL
+        ;
+        
+        // appel à la méthode de RepositoryAbstract pour enregistrer
+        $this->persist($data, $where);
+        
+        // on set l'id quand on est en insert
+        if (empty($picture->getId())) {
+            $picture->setId($this->db->lastInsertId());
+        }
+            
+    }
+    
     public function buildEntity(array $data)
     {
 //        $story = new Stories();
@@ -73,13 +125,13 @@ EOS;
             
             $picture
                     ->setId($data['id'])
-                    ->setUsers_Id($data['users_id'])
+                    ->setUsers_id($data['users_id'])
                     ->setPhoto($data['photo'])
                     ->setTitle($data['title'])
                     ->setHeader($data['header'])
                     ->setContent($data['content'])
-                    ->setDate_Record($data['date_record'])
-                    ->setDate_Picture($data['date_picture'])
+                    ->setDate_record($data['date_record'])
+                    ->setDate_picture($data['date_picture'])
                     ->setCountry($data['country'])
                     ->setCity($data['city'])
                     

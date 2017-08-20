@@ -20,12 +20,12 @@
             <div class="col-md-2 col-offset-1">
                 <a href="{{ path('user_logout')}}">Se déconnecter</a><br>
                 <a href="{{ path('user_logout')}}">Modifier Profil</a><br>
-                <a href="{{ path('user_logout')}}">Ajouter Photos</a>
+                <a href="{{ path('member_pictures_edit')}}">Ajouter Photos</a>
             </div>
 
             <div class="col-md-8">
                 <h3 class="display-5 text-center">Tes Photos</h3>
-                {% include 'member/pictures_list.html.twig' %}
+                {#{% include 'member/pictures_list.html.twig' %}#}
             </div>
         </div>
         

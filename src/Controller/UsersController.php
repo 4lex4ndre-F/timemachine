@@ -8,10 +8,10 @@
 
 namespace Controller;
 
-//use Controller\ControllerAbstract;
-//use Entity\Users;
-//use Repository\PicturesRepository;
-//use Entity\Pictures;
+use Controller\ControllerAbstract;
+use Entity\Users;
+use Repository\PicturesRepository;
+use Entity\Pictures;
 
 
 /**
@@ -21,27 +21,27 @@ namespace Controller;
  */
 class UsersController extends ControllerAbstract
 {
-//    /*-----------------------------------------
-//    
-//           registerAction() & loginAction()           
-//            
-//          SE TROUVE DANS IndexController.php
-//          
-//    /*-----------------------------------------
+    /*-----------------------------------------*\
+    
+           registerAction() & loginAction()           
+            
+          SE TROUVE DANS IndexController.php
+          
+    \*-----------------------------------------*/
 
     
     public function areaAccesAction()
     {
         
         $user = $this->app['user.manager']->getUser();     
-        $pictures = $this->app['pictures.repository']->findAll();
+//        $pictures = $this->app['pictures.repository']->find($id);
 //        dump($pictures);
-//        dump($user);
+        dump($user);
         return $this->render(
             'user/area_access.html.twig',
             [
                 'user' => $user,
-                'pictures' => $pictures
+//                'pictures' => $pictures
             ]
         );
     }
