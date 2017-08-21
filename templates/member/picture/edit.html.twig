@@ -54,11 +54,11 @@
                             <input type="text" name="content" id="content" class="form-control" placeholder="content"value="{{ picture.content }}">
                     </div>
                     
-                    <input type="hidden" name="date_record" id="date_record" class="form-control" value="{{ picture.date_picture|date('d/m/Y') }}">
+                    <input type="hidden" name="date_record" id="date_record" class="form-control" value="{{ picture.date_picture|date('Y/m/d H:i:s') }}">
                     
                     <div class="form-group">
                             <label for="date_picture">Année du cliché </label>
-                            <input type="date" name="date_picture" id="date_picture" class="form-control" placeholder="date de la photo"value="{{ picture.date_picture }}">
+                            <input type="text" name="date_picture" id="date_picture" class="form-control" placeholder="date de la photo"value="{{ picture.date_picture }}">
                     </div>
                     <div class="form-group">
                             <label for="country">pays</label>
@@ -94,7 +94,7 @@
                     
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
-                        <a href="{{ path('area_access') }}" class="btn btn-default">Annuler</a>
+                        <a href="{{ path('member_profil') }}" class="btn btn-default">Annuler</a>
                     </div>
                     
                 </form>

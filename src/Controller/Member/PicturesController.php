@@ -5,6 +5,8 @@ namespace Controller\Member;
 use Controller\ControllerAbstract;
 use Entity\Pictures;
 use Entity\Users;
+
+
 //use Symfony\Component\Validator\Constraints\DateTime;
 
 /*
@@ -38,9 +40,15 @@ class PicturesController extends ControllerAbstract {
 //    }
     
     
-    // AJOUTER + EFFACER une Photo = editer
+    // AJOUTER + MODIFIER une Photo = editer
     public function editAction($id = null)
     {
+        //layout.html.twig
+        $user = $this->app['user.manager']->getUser();
+        //Besoin pour setUsers_id
+        $user_id = $this->app['user.manager']->getUser()->getId();
+        dump($user_id);
+        
         if(!is_null($id)) {
             // on va chercher la picture en BDD
             $picture = $this->app['pictures.repository']->find($id);
@@ -63,10 +71,7 @@ class PicturesController extends ControllerAbstract {
          
         if(!empty($_POST)){
             dump($_POST);
-            //$picture->setId($_POST['id'])
-//            $picture->getUsers_id()->setId($_POST['users_id']);
-            $user = $app['session']->get('user');
-            dump($user);
+            $picture->setUsers_id($user_id);            
             $picture->setTitle($_POST['title']);
             $picture->setHeader($_POST['header']);
             $picture->setContent($_POST['content']);
@@ -74,10 +79,11 @@ class PicturesController extends ControllerAbstract {
             $picture->setDate_Picture($_POST['date_picture']);
             $picture->setCountry($_POST['country']);
             $picture->setCity($_POST['city']);
-            $picture->setPhoto($_FILES['photo']);
+            $picture->setPhoto($_FILES['photo']['name']);
             // $picture->getStory()->setId($_POST['story']);
+            dump($picture);
             
-            if (empty($_FILES['photo']) ) {
+            if (empty($_FILES['photo']['name']) ) {
                 $errors['photo'] = 'Et la photo !!?';
             }
             if (empty($_POST['title']) ) {
@@ -105,10 +111,35 @@ class PicturesController extends ControllerAbstract {
             }
     
             if (empty($errors)) {
+                dump($picture);
+                
+// PROBLEME
+                // -> RACINE_SERVEUR
+// DEBUT SCRIPT PHILIPPE
+//                if(!empty($photo_a_suppr['photo']))
+//                {
+//                    // on vérifie le chemin si le fichier existe
+//                    $chemin_photo = RACINE_SERVEUR . 'photo/'. $photo_a_suppr['photo'];
+//                    $message .=$chemin_photo;
+//                    if(file_exists($chemin_photo))
+//                    {
+//                        unlink($chemin_photo); // unlink() permet de supprimer un fichier sur le serveur. ici on supprime la photo
+//                    }
+//                }
+                                
+                //$photo_dossier = RACINE_SERVEUR . 'photo/' .$photo_bdd;
+                $photo_bdd = $_FILES['photo']['name'];
+                dump($photo_bdd);
+                $photo_dossier = '../web/img/' . $photo_bdd;
+                dump($photo_dossier);//die;
+                
+		copy($_FILES['photo']['tmp_name'], $photo_dossier);
+                
+// FIN SCRIPT PHILIPPE
                 $this->app['pictures.repository']->save($picture);
             
                 $this->addFlashMessage('La photo est enregistrée');
-                return $this->redirectRoute('area_access');
+                return $this->redirectRoute('member_profil');
             } else {
                 $message = '<srong>Le formulaire contient des erreurs</strong>';
                 $message .= '<br>' . implode('<br>', $errors);
@@ -116,10 +147,12 @@ class PicturesController extends ControllerAbstract {
             }
             
         }
+        
         return $this->render(
             'member/picture/edit.html.twig',
             [
                 'picture' => $picture,
+                'user' => $user //layout.html.twig
 //                'now' => new DateTime()
             ]
         );

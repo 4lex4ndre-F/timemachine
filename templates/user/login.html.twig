@@ -1,0 +1,26 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+        <h1>Connexion</h1>
+        <form method="POST">
+            <div class="form-row justify-content-md-center">
+                <div class="form-group col-md-3 col-offset-3">
+                  <input type="email" name="emaillogin" value="{{ emaillogin }}" class="form-control" placeholder="ton email">
+                </div>
+                <div class="form-group col-md-3">
+                  <input type="password" name="password" class="form-control" placeholder="ton mot de passe">
+                </div>
+            </div>
+            <div class="form-row justify-content-md-center">
+                <div class="form-row col-md-6 col-offset-3">
+                    <button type="submit" name="login" value="login" class="btn btn-success btn-block">Connectes toi</button>
+                </div>
+            </div>
+        </form>
+        
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/modal_connexion.js') }}"></script>
+{% endblock %}

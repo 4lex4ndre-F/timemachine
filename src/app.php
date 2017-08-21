@@ -67,11 +67,20 @@ $app['users.controller'] = function() use ($app){
     return new \Controller\UsersController($app);
 };
 
+/* Membre: Gestion Profil */
+$app['member.index.controller'] = function() use ($app){
+    return new \Controller\Member\IndexController($app);
+};
+
 /* Membre : Gestion Photos */
 $app['member.pictures.controller'] = function() use ($app){
     return new \Controller\Member\PicturesController($app);
 };
 
+/* Admin: Gestion Profil */
+$app['admin.index.controller'] = function() use ($app){
+    return new \Controller\Admin\IndexController($app);
+};
 /* ----------------------------------
 
               REPOSITORIES

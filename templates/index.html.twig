@@ -1,5 +1,19 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    Welcome to your new Silex Application!
+    <div class="container-fluid">
+        
+        <h1 class="display-1 text-center homepage">PictStories</h1>
+        <p class="lead text-center">
+            stocke tes <b>Photos</b>, crée tes <b>Albums</b>,<br>
+            profite de notre <b>Moteur de Stories</b> et de notre <b>Timeline Classification</b>.
+        </p>
+        <a href="" class="btn btn-primary btn-block">Inscris-toi pour créer tes stories</a>
+        <p class="display-5 text-center">En t'inscrivant, tu acceptes nos Conditions d’utilisation et notre Politique de confidentialité.</p>
+        
+        <a href="{{ path('user_login') }}" class="btn btn-success btn-block">Tu as déjà un compte ? Connectes toi</a>
+        
+        <div class="bg">
+        </div>
+    </div><!-- container -->
 {% endblock %}

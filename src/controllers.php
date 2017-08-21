@@ -28,9 +28,15 @@ $app
 
 
 // Acces à l'espace Admin ou Membre (+ affichage des photos du membre)
+//$app
+//        ->match('/espace_utilisateur', 'users.controller:areaAccesAction')
+//        ->bind('area_access')
+//;
+
+// loginAction()
 $app
-        ->match('/espace_utilisateur', 'users.controller:areaAccesAction')
-        ->bind('area_access')
+        ->match('/utilisateur/connexion', 'users.controller:loginAction')
+        ->bind('user_login')
 ;
 
 // logoutAction()
@@ -48,7 +54,7 @@ $member = $app['controllers_factory'];
 
 $member->before(function () use ($app) {
     if (!$app['user.manager']->isMember() ) {
-        $app->abbort(403, 'Accès refusé');
+        $app->abort(403, 'Accès refusé'); // abbort
     }
 });
 
@@ -63,6 +69,11 @@ $member
         // ->match('/article/edition/{id}', 'admin.article.controller:editAction')
         // ->value('id', null) // valeur par défaut pour l'id
         // ->bind('admin_article_edit')
+;
+/* Afficher Page Membre */
+$member
+        ->get('/espace_utilisateur', 'member.index.controller:profilAction')
+        ->bind('member_profil')
 ;
 /* ----------------------------------
             
@@ -86,7 +97,7 @@ $admin = $app['controllers_factory'];
  */
 $admin->before(function () use ($app) {
     if (!$app['user.manager']->isAdmin() ) {
-        $app->abbort(403, 'Accès refusé');
+        $app->abort(403, 'Accès refusé');
     }
 });
 
@@ -94,6 +105,11 @@ $admin->before(function () use ($app) {
 // auront une URL commençant par /admin sans avoir à l'ajouter dans chaque route
 $app->mount('/admin', $admin);
 
+/* Afficher Page Membre */
+$admin
+        ->get('/espace_utilisateur', 'admin.index.controller:profilAction')
+        ->bind('admin_profil')
+;
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
